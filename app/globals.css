@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+
+  --color-bg: var(--wl-bg);
+  --color-card: var(--wl-card);
+  --color-fg: var(--wl-fg);
+  --color-muted: var(--wl-muted);
+  --color-accent: var(--wl-accent);
+  --color-border: var(--wl-border);
+  --color-nav: var(--wl-nav);
+  --color-inp: var(--wl-inp);
+  --color-pill: var(--wl-pill);
+  --color-accent-fg: var(--wl-accent-fg);
+  --color-danger: var(--wl-danger);
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+:root {
+  --wl-bg: #f4f1ea;
+  --wl-card: #fffcf7;
+  --wl-fg: #161513;
+  --wl-muted: #6b6862;
+  --wl-accent: #2f6fed;
+  --wl-accent-fg: #ffffff;
+  --wl-border: rgb(22 21 19 / 0.08);
+  --wl-nav: rgb(244 241 234 / 0.9);
+  --wl-inp: rgb(22 21 19 / 0.05);
+  --wl-pill: rgb(47 111 237 / 0.1);
+  --wl-danger: #b42318;
+  --wl-desk: #e7e1d4;
+}
+
+html.dark {
+  --wl-bg: #0e0e10;
+  --wl-card: #18181b;
+  --wl-fg: #f5f4f1;
+  --wl-muted: #a3a29c;
+  --wl-accent: #6ba0ff;
+  --wl-accent-fg: #0e0e10;
+  --wl-border: rgb(255 255 255 / 0.08);
+  --wl-nav: rgb(14 14 16 / 0.9);
+  --wl-inp: rgb(255 255 255 / 0.07);
+  --wl-pill: rgb(107 160 255 / 0.14);
+  --wl-danger: #f97066;
+  --wl-desk: #070708;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@keyframes fu {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-1.1deg);
+  }
+  50% {
+    transform: rotate(1.1deg);
+  }
+}
+
+@keyframes pulse-fab {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-fu {
+  animation: fu 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.22s ease-in-out infinite;
+}
+
+.animate-fab {
+  animation: pulse-fab 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fu,
+  .animate-wiggle,
+  .animate-fab {
+    animation: none;
+  }
+}
